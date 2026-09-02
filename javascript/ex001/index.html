@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de desconto</title>
+</head>
+<body>
+    <h1>Calcular desconto</h1>
+    <form action="index.html">
+        Nome do produto: <input type="text" name="nome" id="nome" placeholder="Informe o nome do produto">
+        Preço unitário: <input type="number" name="preco" id="precoInformado" placeholder="Ex: 29,90">
+        Quantidade: <input type="number" name="quantidade" id="quantidadeInformada" placeholder="Ex: 2">
+        <input type="button" value="Calcular" onclick="calcular()">
+    </form>
+    <div id= "info">
+       <h1>Informações da compra</h1>
+    </div>
+    <script>
+        function calcular() {
+            let nome = window.document.querySelector('input#nome')
+            let precoInformado = window.document.querySelector('input#precoInformado')
+            let quantidadeInformada = window.document.querySelector('input#quantidadeInformada')
+            let info = window.document.querySelector('div#info')
+
+            //Conversão para number
+            let preco = Number(precoInformado.value)
+            let quantidade = Number(quantidadeInformada.value)
+            
+            //Total da compra
+            let total = preco * quantidade
+            
+
+            info.innerHTML += `<p>Nome do produto: ${nome.value}</p></br>`
+            info.innerHTML += `<p>Preço unitário: ${preco}</p></br>` 
+            info.innerHTML += `<p>Quantidade: ${quantidade}</p></br>`
+            
+            let valorDaCompra = 0
+            let desconto = 0
+            if (total >= 100){
+                desconto = total * 0.10
+                valorDaCompra = total - desconto
+                info.innerHTML += `<p>O valor total da compra com desconto é R$${valorDaCompra}</p>`
+            }
+            else {
+                valorDaCompra = total
+                 info.innerHTML += `<p>O valor total da compra é R$${valorDaCompra}</p>`
+            }
+             
+        }
+    </script>
+</body>
+</html>
